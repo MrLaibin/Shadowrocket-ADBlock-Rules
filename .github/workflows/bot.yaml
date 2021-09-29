@@ -4,4 +4,12 @@ name: 'GitHub Actions Weather Bot'
 on:
   push:
   schedule:
-    - cron: '0 21 * * *'
+    - cron: '10 * * * *'
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: 'Get weather report'
+      run: bash ./factory/auto_build.sh
